@@ -37,6 +37,19 @@
             text-align: center;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             border-left: 5px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        /* Efek untuk gambar di galeri */
+        .gallery-image {
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
+        .gallery-image:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
         }
     </style>
 </head>
@@ -46,44 +59,40 @@
         
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-extrabold text-[#00A1E4]">Laporan Kunjungan Mitra</h1>
-            <p class="text-lg text-gray-600 mt-2">Periode: November 2024 - Juni 2025</p>
+            <p class="text-lg text-gray-600 mt-2">Periode: November 2024 - Juli 2025</p>
         </header>
 
         <main class="space-y-16">
 
-            <section id="kinerja-utama">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold">Ringkasan Pencapaian Utama</h2>
-                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Perbandingan antara target yang ditetapkan dengan pencapaian aktual di lapangan.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-4 md:p-6">
-                    <div class="chart-container">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
-                </div>
-            </section>
-            
             <section id="konversi">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center h-full">
                         <h3 class="text-2xl font-bold text-center mb-4">Tingkat Konversi dari Pertemuan</h3>
-                        <p class="text-gray-500 text-center mb-4">Dari 15 pemilik usaha yang berhasil ditemui, 73% setuju bergabung, menandakan pendekatan yang sangat efektif.</p>
+                        <p class="text-gray-500 text-center mb-4">Dari 16 pemilik usaha yang berhasil ditemui, 12 (75%) setuju untuk bergabung.</p>
                         <div class="chart-container h-64 md:h-80">
                             <canvas id="conversionChart"></canvas>
                         </div>
                     </div>
-                     <div class="space-y-4">
+                     <div class="grid grid-cols-2 gap-4">
                         <div class="kpi-card" style="border-color: #00A1E4;">
-                            <p class="text-lg font-semibold text-gray-600">Jumlah Kunjungan</p>
-                            <p class="text-4xl font-extrabold text-[#00A1E4]">20 <span class="text-2xl font-semibold text-gray-500">/ 108</span></p>
+                            <p class="text-sm md:text-lg font-semibold text-gray-600">Jumlah Kunjungan</p>
+                            <p class="text-3xl md:text-4xl font-extrabold text-[#00A1E4]">23 <span class="text-xl md:text-2xl font-semibold text-gray-500">/ 108</span></p>
+                            <p class="text-xs text-gray-400 mt-1">Total lokasi didatangi</p>
                         </div>
                         <div class="kpi-card" style="border-color: #3CD5E0;">
-                            <p class="text-lg font-semibold text-gray-600">Owner Ditemui</p>
-                            <p class="text-4xl font-extrabold text-[#3CD5E0]">15 <span class="text-2xl font-semibold text-gray-500">/ 20</span></p>
+                            <p class="text-sm md:text-lg font-semibold text-gray-600">Owner Ditemui</p>
+                            <p class="text-3xl md:text-4xl font-extrabold text-[#3CD5E0]">16 <span class="text-xl md:text-2xl font-semibold text-gray-500">/ 108</span></p>
+                             <p class="text-xs text-gray-400 mt-1">Berhasil bertemu</p>
                         </div>
                         <div class="kpi-card" style="border-color: #00B5E2;">
-                            <p class="text-lg font-semibold text-gray-600">Mitra Setuju</p>
-                            <p class="text-4xl font-extrabold text-[#00B5E2]">11 <span class="text-2xl font-semibold text-gray-500">/ 15</span></p>
+                            <p class="text-sm md:text-lg font-semibold text-gray-600">Mitra Setuju</p>
+                            <p class="text-3xl md:text-4xl font-extrabold text-[#00B5E2]">12 <span class="text-xl md:text-2xl font-semibold text-gray-500">/ 108</span></p>
+                            <p class="text-xs text-gray-400 mt-1">Setuju menjadi mediator</p>
+                        </div>
+                         <div class="kpi-card" style="border-color: #F87171;">
+                            <p class="text-sm md:text-lg font-semibold text-gray-600">Jumlah Penolakan</p>
+                            <p class="text-3xl md:text-4xl font-extrabold text-[#F87171]">3</p>
+                            <p class="text-xs text-gray-400 mt-1">Mitra menolak bergabung</p>
                         </div>
                      </div>
                 </div>
@@ -95,83 +104,180 @@
                     <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Momen-momen penting dari hasil kunjungan ke calon mitra.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <img src="assets/kunjungan1.png" alt="Agen melakukan presentasi awal kepada calon mitra." class="w-full h-56 object-cover">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                        <img src="assets/kunjungan1.png" alt="Agen melakukan presentasi awal kepada calon mitra." class="w-full h-56 object-cover gallery-image">
                         <figcaption class="p-4 font-semibold text-center">Presentasi Awal</figcaption>
                     </figure>
-                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <img src="assets/diskusi-mitra.jpg" alt="Diskusi mendalam mengenai skema kerja sama." class="w-full h-56 object-cover">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                        <img src="assets/diskusi-mitra.jpg" alt="Diskusi mendalam mengenai skema kerja sama." class="w-full h-56 object-cover gallery-image">
                         <figcaption class="p-4 font-semibold text-center">Diskusi Program</figcaption>
                     </figure>
-                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <img src="assets/toko-sukses.jpg" alt="Toko mitra yang telah setuju untuk bergabung." class="w-full h-56 object-cover">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                        <img src="assets/toko-sukses.jpg" alt="Toko mitra yang telah setuju untuk bergabung." class="w-full h-56 object-cover gallery-image">
                         <figcaption class="p-4 font-semibold text-center">Mitra Berhasil Bergabung</figcaption>
                     </figure>
                 </div>
             </section>
 
-            <section id="analisis-kualitatif">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-center mb-6">✅ Faktor Pendorong Keberhasilan</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start"><span class="text-2xl mr-4">💰</span><div><strong class="text-[#00A1E4]">Komisi Menarik:</strong> Insentif finansial yang kuat dan jelas menjadi daya tarik utama.</div></li>
-                            <li class="flex items-start"><span class="text-2xl mr-4">📋</span><div><strong class="text-[#00A1E4]">Proses Sederhana:</strong> Mitra hanya perlu menyerahkan data tanpa terlibat kerumitan penjualan.</div></li>
-                            <li class="flex items-start"><span class="text-2xl mr-4">💡</span><div><strong class="text-[#00A1E4]">Solusi Permasalahan:</strong> Kunjungan menjadi kesempatan memberi solusi masalah operasional mitra.</div></li>
-                        </ul>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-center mb-6">⚠️ Tantangan & Alasan Penolakan</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start"><span class="text-2xl mr-4">🕒</span><div><strong class="text-[#00A1E4]">Keterbatasan Waktu:</strong> Fokus mitra sudah terbagi untuk operasional utama.</div></li>
-                            <li class="flex items-start"><span class="text-2xl mr-4">👤</span><div><strong class="text-[#00A1E4]">Sulit Bertemu Pemilik:</strong> Karyawan tidak memiliki wewenang mengambil keputusan.</div></li>
-                            <li class="flex items-start"><span class="text-2xl mr-4">🔄</span><div><strong class="text-[#00A1E4]">Jadwal Tidak Terduga:</strong> Rencana kunjungan seringkali harus diubah karena kondisi lapangan.</div></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
             <section id="log-aktivitas">
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold">Tren Pendaftaran Mitra per Bulan</h2>
-                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Momentum dan efektivitas kunjungan dari waktu ke waktu.</p>
+                    <h2 class="text-3xl font-bold">Log Aktivitas Kunjungan</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Rincian dari setiap kunjungan yang telah dilakukan.</p>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-4 md:p-6">
-                    <div class="chart-container">
-                        <canvas id="activityLogChart"></canvas>
-                    </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Tanggal</th>
+                                <th scope="col" class="px-6 py-3">Nama Mitra</th>
+                                <th scope="col" class="px-6 py-3">Lokasi</th>
+                                <th scope="col" class="px-6 py-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">03/07/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Koja</td>
+                                <td class="px-6 py-4">Jakarta Utara</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">24/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Kebon Jeruk 04</td>
+                                <td class="px-6 py-4">Jakarta Barat</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">24/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Kramat Jati</td>
+                                <td class="px-6 py-4">Jakarta Timur</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">20/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Cikupa 02</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">19/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Kosambi</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">Visit Invalid</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">18/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Tanjung Priok</td>
+                                <td class="px-6 py-4">Jakarta Utara</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">11/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Pinang 02</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">04/06/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Karawaci</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">Visit Invalid</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">23/05/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Kebayoran Lama 02</td>
+                                <td class="px-6 py-4">Jakarta Selatan</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">14/03/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Jagakarsa</td>
+                                <td class="px-6 py-4">Jakarta Selatan</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full">Declined</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">11/03/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Sukmajaya 03</td>
+                                <td class="px-6 py-4">Depok</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">11/03/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Dramaga</td>
+                                <td class="px-6 py-4">Bogor</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">05/03/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Kebon Jeruk 03</td>
+                                <td class="px-6 py-4">Jakarta Barat</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full">Declined</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">05/03/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Taman Sari 02</td>
+                                <td class="px-6 py-4">Jakarta Barat</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">Visit Invalid</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">14/01/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Sukmajaya 02</td>
+                                <td class="px-6 py-4">Depok</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">13/01/2025</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Sawangan</td>
+                                <td class="px-6 py-4">Depok</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">12/12/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Pagedangan</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full">Declined</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">12/12/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Kelapa Dua</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full">Off Activity</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">09/12/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Cipondoh</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">Visit Invalid</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">09/12/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Tangerang</td>
+                                <td class="px-6 py-4">Tangerang</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">Visit Invalid</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">26/11/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Cileungsi</td>
+                                <td class="px-6 py-4">Bogor</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">26/11/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Klapanunggal</td>
+                                <td class="px-6 py-4">Bogor</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                             <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">26/11/2024</td>
+                                <td class="px-6 py-4 font-medium">Pengusaha Jonggol</td>
+                                <td class="px-6 py-4">Bogor</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">Done Registered</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
-
-            <section id="rekomendasi">
-                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold">Rekomendasi & Langkah Selanjutnya</h2>
-                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Langkah strategis untuk meningkatkan efektivitas program di periode berikutnya.</p>
-                </div>
-                <div class="space-y-8 max-w-4xl mx-auto">
-                    <div class="flex items-center gap-6">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-[#00A1E4] text-white flex items-center justify-center text-3xl font-bold shadow-lg">1</div>
-                        <div>
-                            <h4 class="text-xl font-bold text-[#00A1E4]">Buat Janji Temu</h4>
-                            <p class="text-gray-600">Hubungi mitra via telepon/pesan sebelum kunjungan untuk memastikan ketersediaan pemilik dan meningkatkan efisiensi waktu.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-6">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-[#00B5E2] text-white flex items-center justify-center text-3xl font-bold shadow-lg">2</div>
-                        <div>
-                            <h4 class="text-xl font-bold text-[#00B5E2]">Fokus Pada Keuntungan</h4>
-                            <p class="text-gray-600">Siapkan materi ringkas, tekankan kembali proses yang mudah dan komisi menarik untuk menjawab keraguan mitra.</p>
-                        </div>
-                    </div>
-                     <div class="flex items-center gap-6">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-[#3CD5E0] text-white flex items-center justify-center text-3xl font-bold shadow-lg">3</div>
-                        <div>
-                            <h4 class="text-xl font-bold text-[#3CD5E0]">Rencanakan Rute Fleksibel</h4>
-                            <p class="text-gray-600">Siapkan daftar mitra cadangan di area yang sama untuk mengantisipasi perubahan jadwal mendadak.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
         </main>
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-200">
@@ -191,65 +297,16 @@
                 text: '#334155'
             };
 
-            const defaultChartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: { color: chartColors.text }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: '#e5e7eb' },
-                        ticks: { color: chartColors.text }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: chartColors.text }
-                    }
-                }
-            };
-
-            // Performance Chart
-            const performanceCtx = document.getElementById('performanceChart');
-            if (performanceCtx) {
-                new Chart(performanceCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Jumlah Kunjungan', 'Owner Ditemui', 'Mitra Setuju'],
-                        datasets: [
-                            {
-                                label: 'Target',
-                                data: [108, 108, 108],
-                                backgroundColor: chartColors.accent,
-                                borderColor: chartColors.tertiary,
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Pencapaian',
-                                data: [20, 15, 11],
-                                backgroundColor: chartColors.primary,
-                                borderColor: chartColors.secondary,
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: defaultChartOptions
-                });
-            }
-
-            // Conversion Chart
+            // Conversion Chart (Donut)
             const conversionCtx = document.getElementById('conversionChart');
             if (conversionCtx) {
                 new Chart(conversionCtx, {
                     type: 'doughnut',
                     data: {
-                        labels: ['Mitra Setuju', 'Ditolak / Lainnya'],
+                        labels: ['Mitra Setuju', 'Tidak Setuju / Lainnya'],
                         datasets: [{
                             label: 'Hasil Pertemuan',
-                            data: [11, 4], 
+                            data: [12, 4], // Data diperbarui: 12 Setuju, 4 Tidak (dari 16 pertemuan)
                             backgroundColor: [chartColors.primary, chartColors.accent],
                             borderColor: [chartColors.secondary, chartColors.tertiary],
                             borderWidth: 2,
@@ -263,42 +320,6 @@
                             legend: {
                                 position: 'bottom',
                                 labels: { color: chartColors.text }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Activity Log Chart
-            const activityLogCtx = document.getElementById('activityLogChart');
-            if (activityLogCtx) {
-                 new Chart(activityLogCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Nov \'24', 'Des \'24', 'Jan \'25', 'Mar \'25', 'Mei \'25', 'Jun \'25'],
-                        datasets: [{
-                            label: 'Mitra Berhasil Didaftarkan',
-                            data: [3, 0, 1, 2, 1, 4],
-                            backgroundColor: chartColors.secondary,
-                            borderColor: chartColors.primary,
-                            borderWidth: 1,
-                            borderRadius: 5,
-                        }]
-                    },
-                    options: {
-                        ...defaultChartOptions,
-                        plugins: {
-                            ...defaultChartOptions.plugins,
-                            legend: { display: false }
-                        },
-                        scales: {
-                            ...defaultChartOptions.scales,
-                             y: {
-                                ...defaultChartOptions.scales.y,
-                                ticks: {
-                                    ...defaultChartOptions.scales.y.ticks,
-                                    stepSize: 1,
-                                }
                             }
                         }
                     }
