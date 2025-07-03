@@ -43,7 +43,7 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-        
+
         /* CSS Baru untuk Galeri Foto 1:1 */
         .gallery-figure {
             background-color: white;
@@ -70,17 +70,12 @@
             transform: scale(1.05);
             filter: brightness(1.1);
         }
-        .gallery-figcaption {
-            padding: 1rem;
-            font-weight: 600; /* font-semibold */
-            text-align: center;
-        }
     </style>
 </head>
 <body class="antialiased">
 
     <div class="container mx-auto p-4 md:p-8">
-        
+
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-extrabold text-[#00A1E4]">Laporan Kunjungan Mitra</h1>
             <p class="text-lg text-gray-600 mt-2">Periode: November 2024 - Juli 2025</p>
@@ -92,7 +87,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center h-full">
                         <h3 class="text-2xl font-bold text-center mb-4">Tingkat Konversi dari Pertemuan</h3>
-                        <p class="text-gray-500 text-center mb-4">Dari 16 pemilik usaha yang berhasil ditemui, 12 (75%) setuju untuk bergabung.</p>
+                        <p class="text-gray-500 text-center mb-4">Dari 18 pemilik usaha yang berhasil ditemui, 14 (78%) setuju untuk menjadi mediator.</p>
                         <div class="chart-container h-64 md:h-80">
                             <canvas id="conversionChart"></canvas>
                         </div>
@@ -114,14 +109,14 @@
                             <p class="text-xs text-gray-400 mt-1">Setuju menjadi mediator</p>
                         </div>
                          <div class="kpi-card" style="border-color: #F87171;">
-                            <p class="text-sm md:text-lg font-semibold text-gray-600">Jumlah Penolakan</p>
+                            <p class="text-sm md:text-lg font-semibold text-gray-600">Penolakan & Tantangan</p>
                             <p class="text-3xl md:text-4xl font-extrabold text-[#F87171]">3</p>
-                            <p class="text-xs text-gray-400 mt-1">Mitra menolak bergabung</p>
+                            <p class="text-xs text-gray-400 mt-1">Mitra menolak/hambatan program</p>
                         </div>
                      </div>
                 </div>
             </section>
-            
+
             <section id="analisis-kualitatif">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold">Analisis Kualitatif</h2>
@@ -137,11 +132,11 @@
                         </ul>
                     </div>
                     <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-center mb-6 text-red-500">❌ Alasan Penolakan Utama</h3>
+                        <h3 class="text-2xl font-bold text-center mb-6 text-red-500">❌ Penolakan dan Tantangan</h3>
                         <ul class="space-y-4">
                             <li class="flex items-start text-left"><span class="text-2xl mr-4">⏳</span><div><strong class="font-semibold">Keterbatasan Waktu:</strong><br>Mitra ragu menambah beban kerja baru di luar fokus utama operasional mereka.</div></li>
                             <li class="flex items-start text-left"><span class="text-2xl mr-4">👤</span><div><strong class="font-semibold">Sulit Bertemu Pemilik:</strong><br>Pemilik sebagai pengambil keputusan sering tidak berada di lokasi usaha.</div></li>
-                            <li class="flex items-start text-left"><span class="text-2xl mr-4">🔄</span><div><strong class="font-semibold">Jadwal Tidak Terduga:</strong><br>Perubahan jadwal mendadak mengurangi efektivitas dan jumlah kunjungan per hari.</div></li>
+                            <li class="flex items-start text-left"><span class="text-2xl mr-4">🛑</span><div><strong class="font-semibold">Mitra tidak aktif mencarikan leads:</strong><br>Ini menjadi hambatan dari tercapainya tujuan program.</div></li>
                         </ul>
                     </div>
                 </div>
@@ -157,25 +152,21 @@
                         <div class="gallery-image-container">
                             <img src="assets/pengusaha cikupa.JPG" alt="Dokumentasi Pengusaha Cikupa" class="gallery-image">
                         </div>
-                        <figcaption class="gallery-figcaption">Pengusaha Cikupa</figcaption>
                     </figure>
                     <figure class="gallery-figure">
                         <div class="gallery-image-container">
                             <img src="assets/pengusaha koja.JPG" alt="Dokumentasi Pengusaha Koja" class="gallery-image">
                         </div>
-                        <figcaption class="gallery-figcaption">Pengusaha Koja</figcaption>
                     </figure>
                     <figure class="gallery-figure">
                         <div class="gallery-image-container">
                             <img src="assets/pengusaha pinang 02.JPG" alt="Dokumentasi Pengusaha Pinang 02" class="gallery-image">
                         </div>
-                        <figcaption class="gallery-figcaption">Pengusaha Pinang 02</figcaption>
                     </figure>
                     <figure class="gallery-figure">
                         <div class="gallery-image-container">
                             <img src="assets/pengusaha tanjung priuk.JPG" alt="Dokumentasi Pengusaha Tanjung Priok" class="gallery-image">
                         </div>
-                        <figcaption class="gallery-figcaption">Pengusaha Tanjung Priok</figcaption>
                     </figure>
                 </div>
             </section>
@@ -338,7 +329,7 @@
                     </table>
                 </div>
             </section>
-            
+
         </main>
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-200">
@@ -349,7 +340,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             const chartColors = {
                 primary: '#00A1E4',
                 secondary: '#00B5E2',
@@ -358,7 +349,7 @@
                 text: '#334155'
             };
 
-            // Conversion Chart (Donut)
+            // Conversion Chart (Donut) - Updated Data
             const conversionCtx = document.getElementById('conversionChart');
             if (conversionCtx) {
                 new Chart(conversionCtx, {
@@ -367,7 +358,7 @@
                         labels: ['Mitra Setuju', 'Tidak Setuju / Lainnya'],
                         datasets: [{
                             label: 'Hasil Pertemuan',
-                            data: [12, 4], 
+                            data: [14, 4], // 14 Setuju, 4 Tidak Setuju/Lainnya (18 - 14 = 4)
                             backgroundColor: [chartColors.primary, chartColors.accent],
                             borderColor: [chartColors.secondary, chartColors.tertiary],
                             borderWidth: 2,
