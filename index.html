@@ -43,8 +43,6 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-
-        /* CSS Baru untuk Galeri Foto 1:1 */
         .gallery-figure {
             background-color: white;
             border-radius: 0.75rem;
@@ -63,7 +61,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Mencegah gambar gepeng */
+            object-fit: cover;
             transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         }
         .gallery-image:hover {
@@ -109,9 +107,9 @@
                             <p class="text-xs text-gray-400 mt-1">Setuju menjadi mediator</p>
                         </div>
                          <div class="kpi-card" style="border-color: #F87171;">
-                            <p class="text-sm md:text-lg font-semibold text-gray-600">Penolakan</p>
+                            <p class="text-sm md:text-lg font-semibold text-gray-600">Penolakan & Tantangan</p>
                             <p class="text-3xl md:text-4xl font-extrabold text-[#F87171]">3</p>
-                            <p class="text-xs text-gray-400 mt-1">Mitra menolak menjadi mediator</p>
+                            <p class="text-xs text-gray-400 mt-1">Mitra menolak/hambatan program</p>
                         </div>
                      </div>
                 </div>
@@ -136,9 +134,34 @@
                         <ul class="space-y-4">
                             <li class="flex items-start text-left"><span class="text-2xl mr-4">⏳</span><div><strong class="font-semibold">Keterbatasan Waktu:</strong><br>Mitra ragu menambah beban kerja baru di luar fokus utama operasional mereka.</div></li>
                             <li class="flex items-start text-left"><span class="text-2xl mr-4">👤</span><div><strong class="font-semibold">Sulit Bertemu Pemilik:</strong><br>Pemilik sebagai pengambil keputusan sering tidak berada di lokasi usaha.</div></li>
-                            <li class="flex items-start text-left"><span class="text-2xl mr-4">🛑</span><div><strong class="font-semibold">Mitra tidak aktif mencarikan leads:</strong><br>Banyak mitra menunjukkan tingkat partisipasi yang rendah dalam upaya pencarian leads</div></li>
+                            <li class="flex items-start text-left"><span class="text-2xl mr-4">🛑</span><div><strong class="font-semibold">Mitra tidak aktif mencarikan leads:</strong><br>Ini menjadi hambatan dari tercapainya tujuan program.</div></li>
                         </ul>
                     </div>
+                </div>
+            </section>
+
+            <section id="profil-mitra">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">Profil Mitra Ideal & Segmentasi 🎯</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Mengidentifikasi karakteristik mitra yang paling potensial untuk diajak bekerja sama.</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6">
+                    <ul class="space-y-4 md:space-y-0 md:flex md:justify-around">
+                        <li class="flex items-center">
+                            <span class="text-4xl mr-4">📦</span>
+                            <div>
+                                <strong class="font-semibold">Volume Order Terkelola</strong>
+                                <p class="text-gray-600">Mitra dengan order kurang dari 500 lebih mudah mengadopsi alur kerja baru.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center mt-4 md:mt-0">
+                            <span class="text-4xl mr-4">🚚</span>
+                            <div>
+                                <strong class="font-semibold">Fokus Layanan Ekspedisi</strong>
+                                <p class="text-gray-600">Outlet yang tidak menjalankan banyak ekspedisi lain menunjukkan potensi fokus lebih tinggi.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </section>
 
@@ -330,6 +353,22 @@
                 </div>
             </section>
 
+            <section id="rencana-aksi">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">Rencana Aksi & Rekomendasi Strategis 💡</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Langkah konkret berikutnya untuk meningkatkan akuisisi dan keterlibatan mitra.</p>
+                </div>
+                <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-start">
+                        <span class="text-3xl mr-4 text-blue-500">📄</span>
+                        <div>
+                            <h4 class="text-lg font-semibold">Pengembangan Materi Promosi</h4>
+                            <p class="text-gray-600">Buat materi promosi tambahan berupa flyer ringkas yang menarik. Flyer ini dapat dengan mudah dibagikan oleh mitra kepada pelanggan mereka untuk meningkatkan visibilitas dan jumlah leads.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
         </main>
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-200">
@@ -358,7 +397,7 @@
                         labels: ['Mitra Setuju', 'Tidak Setuju / Lainnya'],
                         datasets: [{
                             label: 'Hasil Pertemuan',
-                            data: [14, 4], // 14 Setuju, 4 Tidak Setuju/Lainnya (18 - 14 = 4)
+                            data: [14, 4], // Data diperbarui: 14 Setuju, 4 Tidak (dari 18 pertemuan)
                             backgroundColor: [chartColors.primary, chartColors.accent],
                             borderColor: [chartColors.secondary, chartColors.tertiary],
                             borderWidth: 2,
