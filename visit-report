@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis SPA: Laporan Kunjungan Mitra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border-left: 5px solid;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- 
+    Palette Name: Brilliant Blues 
+    Confirmation: NEITHER Mermaid JS NOR SVG were used in this output.
+    Narrative Plan:
+    1. Header: Title and period.
+    2. KPIs & Conversion: Big numbers and a grouped bar chart for target vs achievement, plus a donut chart for conversion rate.
+    3. Success & Challenges: Two-column layout with cards for qualitative insights.
+    4. Activity Trend: Bar chart showing successful registrations over time.
+    5. Recommendations: A visually structured flowchart-like section.
+    Chart Selections:
+    - Target vs Achievement: Grouped Bar Chart (Chart.js) -> Goal: Compare. Best for direct comparison of two series (Target, Actual) across multiple categories. NO SVG.
+    - Conversion Rate: Donut Chart (Chart.js) -> Goal: Inform. Clearly shows a part-to-whole relationship for a key metric. NO SVG.
+    - Registrations per Month: Bar Chart (Chart.js) -> Goal: Change. Shows performance fluctuations over the reporting period. NO SVG.
+    - Recommendations Flow: HTML/CSS Diagram -> Goal: Organize. Structures action items into a clear, sequential process. NO SVG.
+    -->
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#00A1E4]">Laporan Kunjungan Mitra</h1>
+            <p class="text-lg text-gray-600 mt-2">November 2024 - Juni 2025</p>
+        </header>
+
+        <main class="space-y-12">
+
+            <section id="kinerja-utama">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Ringkasan Pencapaian Utama</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Visualisasi perbandingan antara target yang ditetapkan dengan pencapaian aktual di lapangan selama periode laporan.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-4 md:p-6">
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="konversi">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center h-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Tingkat Konversi dari Pertemuan</h3>
+                         <p class="text-gray-500 text-center mb-4">Dari 15 pemilik usaha yang berhasil ditemui, 73% setuju untuk bergabung. Ini menunjukkan strategi pendekatan yang sangat efektif saat komunikasi langsung dapat terjalin.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="conversionChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="space-y-4">
+                        <div class="kpi-card" style="border-color: #00A1E4;">
+                            <p class="text-lg font-semibold text-gray-600">Jumlah Kunjungan</p>
+                            <p class="text-4xl font-extrabold text-[#00A1E4]">20 <span class="text-2xl font-semibold text-gray-500">/ 108</span></p>
+                        </div>
+                        <div class="kpi-card" style="border-color: #3CD5E0;">
+                            <p class="text-lg font-semibold text-gray-600">Owner Ditemui</p>
+                            <p class="text-4xl font-extrabold text-[#3CD5E0]">15 <span class="text-2xl font-semibold text-gray-500">/ 20</span></p>
+                        </div>
+                        <div class="kpi-card" style="border-color: #00B5E2;">
+                            <p class="text-lg font-semibold text-gray-600">Mitra Setuju</p>
+                            <p class="text-4xl font-extrabold text-[#00B5E2]">11 <span class="text-2xl font-semibold text-gray-500">/ 15</span></p>
+                        </div>
+                     </div>
+                </div>
+            </section>
+
+            <section id="analisis-kualitatif">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">✅ Faktor Pendorong Keberhasilan</h3>
+                        <p class="text-gray-500 text-center mb-6">Analisis menunjukkan tiga alasan utama mengapa mitra tertarik untuk bergabung dalam program ini.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><span class="text-2xl mr-4">💰</span><div><strong class="text-[#00A1E4]">Komisi Menarik:</strong> Nilai Rp 500.000 per unit menjadi insentif finansial yang sangat kuat dan jelas.</div></li>
+                            <li class="flex items-start"><span class="text-2xl mr-4">📋</span><div><strong class="text-[#00A1E4]">Proses Sederhana:</strong> Mitra menyukai kemudahan proses, di mana mereka hanya perlu menyerahkan data tanpa terlibat dalam kerumitan penjualan.</div></li>
+                            <li class="flex items-start"><span class="text-2xl mr-4">💡</span><div><strong class="text-[#00A1E4]">Solusi Permasalahan:</strong> Kunjungan menjadi kesempatan untuk memberikan solusi atas masalah operasional harian yang dihadapi mitra.</div></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">⚠️ Tantangan & Alasan Penolakan</h3>
+                        <p class="text-gray-500 text-center mb-6">Beberapa hambatan utama diidentifikasi sebagai penyebab penolakan atau kesulitan di lapangan.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><span class="text-2xl mr-4">🕒</span><div><strong class="text-[#00A1E4]">Keterbatasan Waktu:</strong> Mitra merasa fokus mereka sudah terbagi untuk operasional utama sehingga ragu menambah tugas baru.</div></li>
+                            <li class="flex items-start"><span class="text-2xl mr-4">👤</span><div><strong class="text-[#00A1E4]">Sulit Bertemu Pemilik:</strong> Pemilik seringkali tidak di lokasi, dan karyawan tidak memiliki wewenang mengambil keputusan.</div></li>
+                            <li class="flex items-start"><span class="text-2xl mr-4">🔄</span><div><strong class="text-[#00A1E4]">Jadwal Tidak Terduga:</strong> Rencana kunjungan yang sudah disusun seringkali harus diubah karena kondisi di lapangan.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="log-aktivitas">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Tren Pendaftaran Mitra per Bulan</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Grafik ini menunjukkan jumlah mitra yang berhasil didaftarkan setiap bulan, menyoroti momentum dan efektivitas kunjungan dari waktu ke waktu.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-4 md:p-6">
+                    <div class="chart-container">
+                        <canvas id="activityLogChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rekomendasi">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Rekomendasi & Langkah Selanjutnya</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Berdasarkan analisis, berikut adalah langkah-langkah strategis yang direkomendasikan untuk meningkatkan efektivitas program di periode berikutnya.</p>
+                </div>
+
+                <div class="relative px-4">
+                    <div class="absolute h-full border-l-4 border-dashed border-[#9CF4F9] left-1/2 -translate-x-1/2 hidden md:block"></div>
+                    
+                    <div class="space-y-12 md:space-y-0">
+                        <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                             <div class="text-center md:text-right md:pr-8 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-[#00A1E4]">1. Buat Janji Temu</h4>
+                                <p class="text-gray-600">Hubungi mitra via telepon/pesan sebelum kunjungan untuk memastikan ketersediaan pemilik dan meningkatkan efisiensi waktu.</p>
+                            </div>
+                            <div class="flex justify-center md:justify-start">
+                                <div class="w-16 h-16 rounded-full bg-[#00A1E4] text-white flex items-center justify-center text-3xl font-bold shadow-lg">📞</div>
+                            </div>
+                        </div>
+
+                        <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                            <div class="flex justify-center md:justify-end order-last md:order-first">
+                                <div class="w-16 h-16 rounded-full bg-[#00B5E2] text-white flex items-center justify-center text-3xl font-bold shadow-lg">✨</div>
+                            </div>
+                            <div class="text-center md:text-left md:pl-8 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-[#00B5E2]">2. Fokus Pada Keuntungan</h4>
+                                <p class="text-gray-600">Siapkan materi yang ringkas, tekankan kembali proses yang mudah dan komisi menarik untuk menjawab keraguan mitra.</p>
+                            </div>
+                        </div>
+
+                        <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                             <div class="text-center md:text-right md:pr-8 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-[#3CD5E0]">3. Rencanakan Rute Fleksibel</h4>
+                                <p class="text-gray-600">Siapkan daftar mitra cadangan di area yang sama untuk mengantisipasi perubahan jadwal mendadak.</p>
+                            </div>
+                            <div class="flex justify-center md:justify-start">
+                                <div class="w-16 h-16 rounded-full bg-[#3CD5E0] text-white flex items-center justify-center text-3xl font-bold shadow-lg">🗺️</div>
+                            </div>
+                        </div>
+
+                        <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                            <div class="flex justify-center md:justify-end order-last md:order-first">
+                               <div class="w-16 h-16 rounded-full bg-[#9CF4F9] text-gray-700 flex items-center justify-center text-3xl font-bold shadow-lg">🤝</div>
+                            </div>
+                             <div class="text-center md:text-left md:pl-8 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-[#9CF4F9]">4. Follow-Up Cepat</h4>
+                                <p class="text-gray-600">Segera hubungi kembali mitra yang sudah setuju untuk menjaga momentum dan memulai proses kerja sama.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-200">
+            <p class="text-gray-500">&copy; 2025 Analisis Kinerja Mitra. Dibuat untuk pengambilan keputusan strategis.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const brilliantBlues = {
+                primary: '#00A1E4',
+                secondary: '#00B5E2',
+                tertiary: '#3CD5E0',
+                accent: '#9CF4F9',
+                text: '#334155'
+            };
+
+            const defaultTooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: brilliantBlues.text
+                        }
+                    }
+                }
+            };
+            
+            const wrapLabel = (label) => {
+                const maxLen = 16;
+                if (typeof label !== 'string' || label.length <= maxLen) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLen) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const performanceCtx = document.getElementById('performanceChart');
+            if(performanceCtx) {
+                new Chart(performanceCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jumlah Kunjungan', 'Owner Ditemui', 'Mitra Setuju'],
+                        datasets: [
+                            {
+                                label: 'Target',
+                                data: [108, 108, 108],
+                                backgroundColor: brilliantBlues.accent,
+                                borderColor: brilliantBlues.tertiary,
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Pencapaian',
+                                data: [20, 15, 11],
+                                backgroundColor: brilliantBlues.primary,
+                                borderColor: brilliantBlues.secondary,
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        ...defaultTooltipCallback,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: '#e5e7eb'
+                                },
+                                ticks: { color: brilliantBlues.text }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: { color: brilliantBlues.text }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const conversionCtx = document.getElementById('conversionChart');
+            if(conversionCtx) {
+                new Chart(conversionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Mitra Setuju', 'Ditolak / Lainnya'],
+                        datasets: [{
+                            label: 'Hasil Pertemuan',
+                            data: [11, 4], 
+                            backgroundColor: [
+                                brilliantBlues.primary,
+                                brilliantBlues.accent
+                            ],
+                            borderColor: [
+                                brilliantBlues.secondary,
+                                brilliantBlues.tertiary,
+                            ],
+                            borderWidth: 2,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        ...defaultTooltipCallback,
+                        plugins: {
+                            ...defaultTooltipCallback.plugins,
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: brilliantBlues.text
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const activityLogCtx = document.getElementById('activityLogChart');
+            if(activityLogCtx) {
+                 new Chart(activityLogCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Nov \'24', 'Des \'24', 'Jan \'25', 'Mar \'25', 'Mei \'25', 'Jun \'25'],
+                        datasets: [
+                            {
+                                label: 'Mitra Berhasil Didaftarkan',
+                                data: [3, 0, 1, 2, 1, 4],
+                                backgroundColor: brilliantBlues.secondary,
+                                borderColor: brilliantBlues.primary,
+                                borderWidth: 1,
+                                borderRadius: 5,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        ...defaultTooltipCallback,
+                        scales: {
+                             y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1,
+                                    color: brilliantBlues.text
+                                },
+                                grid: {
+                                    color: '#e5e7eb'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: { color: brilliantBlues.text }
+                            }
+                        },
+                        plugins: {
+                            ...defaultTooltipCallback.plugins,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
