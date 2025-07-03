@@ -43,12 +43,37 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+        
+        /* CSS Baru untuk Galeri Foto 1:1 */
+        .gallery-figure {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .gallery-image-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; /* 1:1 Aspect Ratio */
+        }
         .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mencegah gambar gepeng */
             transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         }
         .gallery-image:hover {
             transform: scale(1.05);
             filter: brightness(1.1);
+        }
+        .gallery-figcaption {
+            padding: 1rem;
+            font-weight: 600; /* font-semibold */
+            text-align: center;
         }
     </style>
 </head>
@@ -125,19 +150,32 @@
             <section id="dokumentasi">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold">Dokumentasi Lapangan</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Momen-momen penting dari hasil kunjungan ke calon mitra.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
-                        <img src="assets/kunjungan1.png" alt="Agen melakukan presentasi awal kepada calon mitra." class="w-full h-56 object-cover gallery-image">
-                        <figcaption class="p-4 font-semibold text-center">Presentasi Awal</figcaption>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <figure class="gallery-figure">
+                        <div class="gallery-image-container">
+                            <img src="assets/pengusaha cikupa.JPG" alt="Dokumentasi Pengusaha Cikupa" class="gallery-image">
+                        </div>
+                        <figcaption class="gallery-figcaption">Pengusaha Cikupa</figcaption>
                     </figure>
-                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
-                        <img src="assets/diskusi-mitra.jpg" alt="Diskusi mendalam mengenai skema kerja sama." class="w-full h-56 object-cover gallery-image">
-                        <figcaption class="p-4 font-semibold text-center">Diskusi Program</figcaption>
+                    <figure class="gallery-figure">
+                        <div class="gallery-image-container">
+                            <img src="assets/pengusaha koja.JPG" alt="Dokumentasi Pengusaha Koja" class="gallery-image">
+                        </div>
+                        <figcaption class="gallery-figcaption">Pengusaha Koja</figcaption>
                     </figure>
-                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
-                        <img src="assets/toko-sukses.jpg" alt="Toko mitra yang telah setuju untuk bergabung." class="w-full h-56 object-cover gallery-image">
-                        <figcaption class="p-4 font-semibold text-center">Mitra Berhasil Bergabung</figcaption>
+                    <figure class="gallery-figure">
+                        <div class="gallery-image-container">
+                            <img src="assets/pengusaha pinang 02.JPG" alt="Dokumentasi Pengusaha Pinang 02" class="gallery-image">
+                        </div>
+                        <figcaption class="gallery-figcaption">Pengusaha Pinang 02</figcaption>
+                    </figure>
+                    <figure class="gallery-figure">
+                        <div class="gallery-image-container">
+                            <img src="assets/pengusaha tanjung priuk.JPG" alt="Dokumentasi Pengusaha Tanjung Priok" class="gallery-image">
+                        </div>
+                        <figcaption class="gallery-figcaption">Pengusaha Tanjung Priok</figcaption>
                     </figure>
                 </div>
             </section>
@@ -329,7 +367,7 @@
                         labels: ['Mitra Setuju', 'Tidak Setuju / Lainnya'],
                         datasets: [{
                             label: 'Hasil Pertemuan',
-                            data: [12, 4], // Data diperbarui: 12 Setuju, 4 Tidak (dari 16 pertemuan)
+                            data: [12, 4], 
                             backgroundColor: [chartColors.primary, chartColors.accent],
                             borderColor: [chartColors.secondary, chartColors.tertiary],
                             borderWidth: 2,
